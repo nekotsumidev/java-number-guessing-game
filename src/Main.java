@@ -6,15 +6,14 @@ public class Main {
 
         int guess = 0;
         int attempts = 5;
+        int randomLimit = 100;
 
         System.out.println("Welcome to number guessing game! Guess the number between 1 and 100!");
 
         Scanner sc = new Scanner(System.in);
 
         Random randomNumber = new Random();
-        int secretNumber = randomNumber.nextInt(100) + 1;
-
-        System.out.println(secretNumber);
+        int secretNumber = randomNumber.nextInt(randomLimit) + 1;
 
         while (attempts != 0 && guess != secretNumber) {
             System.out.println("You have " + attempts + " attempts left. Enter your guess: ");
