@@ -4,20 +4,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        welcomeMessage();
-        guessEngine();
+        int guess = 0;
+        int attempts = 5;
+        int randomLimit = 100;
 
-    }
-    public static void welcomeMessage() {
         System.out.println("Welcome to number guessing game! Guess the number between 1 and 100!");
-    }
-    public static void guessEngine() {
 
-        int secretNumber = genRandomNumber();
         Scanner sc = new Scanner(System.in);
 
-        int guess = 0;
-        int attempts = 10;
+        Random randomNumber = new Random();
+        int secretNumber = randomNumber.nextInt(randomLimit) + 1;
 
         while (attempts != 0 && guess != secretNumber) {
             System.out.println("You have " + attempts + " attempts left. Enter your guess: ");
@@ -26,22 +22,17 @@ public class Main {
             attempts--;
 
             if (guess == secretNumber) {
-                System.out.println("You Win!!! Attempts used: " + (5 - attempts));
+                System.out.println("You guessed the number!");
             } else if (guess > secretNumber) {
                 System.out.println("Number too high!");
             } else {
                 System.out.println("Number too low!");
             }
         }
-        if (guess != secretNumber) {
+        if (guess == secretNumber) {
+            System.out.println("You Win!!! Attempts used: " + (5 - attempts));
+        } else {
             System.out.println("You Lose! The number was " + secretNumber);
         }
-    }
-
-    public static int genRandomNumber() {
-        int randomLimit = 100;
-
-        Random randomNumber = new Random();
-        return randomNumber.nextInt(randomLimit) +1;
     }
 }
